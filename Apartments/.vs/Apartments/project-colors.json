@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "df50c2f6-78f0-424b-934b-f0bdba07059c": {
+      "ProjectGuid": "df50c2f6-78f0-424b-934b-f0bdba07059c",
+      "DisplayName": "Apartments",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

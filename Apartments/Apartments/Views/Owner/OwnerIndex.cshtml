@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Apartments.Owner>
+
+@{
+    ViewBag.Title = "OwnerIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OwnerIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New Owner", "CreateOwner")
+
+    @Html.ActionLink("Apartments", "Index", "Apartments")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApartmentIDApartment)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDOwner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApartmentIDApartment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditOwner", new { id =item.IDOwner }) |
+            @Html.ActionLink("Details", "DetailsOwner", new { id = item.IDOwner }) |
+            @Html.ActionLink("Delete", "DeleteOwner", new { id = item.IDOwner })
+        </td>
+    </tr>
+}
+
+</table>

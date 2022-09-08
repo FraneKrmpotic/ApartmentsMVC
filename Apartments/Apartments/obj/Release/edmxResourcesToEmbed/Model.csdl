@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Apartments" EntityType="Model.Apartment" />
+    <EntitySet Name="UploadedFiles" EntityType="Model.UploadedFile" />
+    <AssociationSet Name="ApartmentUploadedFile" Association="Model.ApartmentUploadedFile">
+      <End Role="Apartment" EntitySet="Apartments" />
+      <End Role="UploadedFile" EntitySet="UploadedFiles" />
+    </AssociationSet>
+    <EntitySet Name="Owners" EntityType="Model.Owner" />
+    <AssociationSet Name="ApartmentOwner" Association="Model.ApartmentOwner">
+      <End Role="Apartment" EntitySet="Apartments" />
+      <End Role="Owner" EntitySet="Owners" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Apartment">
+    <Key>
+      <PropertyRef Name="IDApartment" />
+    </Key>
+    <Property Name="IDApartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="Contact" Type="String" Nullable="false" MaxLength="50" />
+    <NavigationProperty Name="UploadedFiles" Relationship="Model.ApartmentUploadedFile" FromRole="Apartment" ToRole="UploadedFile" />
+    <NavigationProperty Name="Owners" Relationship="Model.ApartmentOwner" FromRole="Apartment" ToRole="Owner" />
+  </EntityType>
+  <EntityType Name="UploadedFile">
+    <Key>
+      <PropertyRef Name="IDUploadedFile" />
+    </Key>
+    <Property Name="IDUploadedFile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="ContentType" Type="String" Nullable="false" MaxLength="20" />
+    <Property Name="Content" Type="Binary" Nullable="false" />
+    <NavigationProperty Name="Apartment" Relationship="Model.ApartmentUploadedFile" FromRole="UploadedFile" ToRole="Apartment" />
+    <Property Name="ApartmentIDApartment" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ApartmentUploadedFile">
+    <End Type="Model.Apartment" Role="Apartment" Multiplicity="1" />
+    <End Type="Model.UploadedFile" Role="UploadedFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="IDApartment" />
+      </Principal>
+      <Dependent Role="UploadedFile">
+        <PropertyRef Name="ApartmentIDApartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="IDOwner" />
+    </Key>
+    <Property Name="IDOwner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" />
+    <NavigationProperty Name="Apartment" Relationship="Model.ApartmentOwner" FromRole="Owner" ToRole="Apartment" />
+    <Property Name="ApartmentIDApartment" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ApartmentOwner">
+    <End Type="Model.Apartment" Role="Apartment" Multiplicity="1" />
+    <End Type="Model.Owner" Role="Owner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartment">
+        <PropertyRef Name="IDApartment" />
+      </Principal>
+      <Dependent Role="Owner">
+        <PropertyRef Name="ApartmentIDApartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

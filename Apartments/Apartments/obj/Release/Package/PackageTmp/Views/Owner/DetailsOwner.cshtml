@@ -1,0 +1,51 @@
+﻿@model Apartments.Owner
+
+@{
+    ViewBag.Title = "DetailsOwner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetailsOwner</h2>
+
+<div>
+    <h4>Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApartmentIDApartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApartmentIDApartment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditOwner", new { id = Model.IDOwner}) |
+    @Html.ActionLink("Back to List", "OwnerIndex")
+</p>

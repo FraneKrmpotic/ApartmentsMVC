@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Apartments">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Apartment)">
+        <MappingFragment StoreEntitySet="Apartments">
+          <ScalarProperty Name="IDApartment" ColumnName="IDApartment" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UploadedFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.UploadedFile)">
+        <MappingFragment StoreEntitySet="UploadedFiles">
+          <ScalarProperty Name="IDUploadedFile" ColumnName="IDUploadedFile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="ApartmentIDApartment" ColumnName="ApartmentIDApartment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Owner)">
+        <MappingFragment StoreEntitySet="Owners">
+          <ScalarProperty Name="IDOwner" ColumnName="IDOwner" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ApartmentIDApartment" ColumnName="ApartmentIDApartment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
